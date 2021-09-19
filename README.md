@@ -8,5 +8,5 @@ Site para assistir filmes e séries consumindo a API do <a href="https://www.the
 
 Para rodar a aplicação acesse o terminal e dê os seguintes comandos em sequência:
 
-- yarn add
-- yarn start
+-   yarn
+-   yarn start
