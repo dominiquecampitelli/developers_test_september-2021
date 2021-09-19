@@ -2,6 +2,8 @@ import React from 'react';
 import { isAuthenticated } from './auth';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
+import Home from './pages/home';
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
@@ -21,7 +23,7 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={() => <h1>Não logado</h1>} />
-            <PrivateRoute path="/" component={() => <h1>Logado</h1>} />
+            <PrivateRoute path="/home" component={Home} />
         </Switch>
     </BrowserRouter>
 );
