@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import api from '../../services/api';
 
 import Input from '../../components/Input';
+import LogOff from '../../components/LogOff';
 
 import { Container, Nav, Logo } from './styles';
 
@@ -33,10 +34,12 @@ export default function Navbar() {
         <Container>
             <Nav>
                 <Logo>Netflicos</Logo>
+                <LogOff />
                 <Form ref={formRef} onSubmit={handleSubmit}>
                     <Input placeholder="Pesquise" type="text" name="query" />
                     <button type="submit">Buscar</button>
                 </Form>
+
                 <div>
                     {results &&
                         results.length > 0 &&

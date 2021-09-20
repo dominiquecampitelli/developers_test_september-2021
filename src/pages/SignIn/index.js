@@ -31,11 +31,14 @@ export default function DataTakerUser() {
             const { token } = response;
             console.log(response);
 
-            sessionStorage.setItem('token', token);
-            history.push('/home');
+            if (token) {
+                sessionStorage.setItem('token', token);
+                history.push('/home');
+            }
         } catch (err) {
             console.error('Tente novamente mais tarde', err);
             //setLoading(false);
+            sessionStorage.removeItem('token');
 
             const validationErrors = {};
             if (err instanceof Yup.ValidationError) {
