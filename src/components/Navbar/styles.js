@@ -10,7 +10,6 @@ export const Container = styled.div`
 export const Nav = styled.nav``;
 
 export const Logo = styled.h1`
-    color: #ffffff;
     display: flex;
     align-items: center;
     font-size: 20px;
