@@ -3,6 +3,7 @@ import api from '../../services/api';
 import { useParams } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
+import { BackLink } from './styles';
 
 export default function Details() {
     const { id, media_type } = useParams();
@@ -35,6 +36,7 @@ export default function Details() {
                     {mediaData.original_title}
                 </div>
             )}
+            <BackLink href="/home">Voltar</BackLink>
         </>
     );
 }

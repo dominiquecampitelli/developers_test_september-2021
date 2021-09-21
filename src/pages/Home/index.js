@@ -30,12 +30,6 @@ export default function Home() {
         loadMovies();
     }, []);
 
-    // function renderPages() {
-    //     for (let i = 1; i <= 20; i++) {
-    //         <button onClick={() => console.log()}>element</button>;
-    //     }
-    // }
-
     return (
         <>
             <Navbar />

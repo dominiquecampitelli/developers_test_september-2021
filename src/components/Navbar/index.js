@@ -1,12 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Form } from '@unform/web';
-import * as Yup from 'yup';
 import api from '../../services/api';
 
 import Input from '../../components/Input';
 import LogOff from '../../components/LogOff';
 
-import { Container, Nav, Logo } from './styles';
+import { Container, HeaderLine, Logo, Search, Button } from './styles';
 
 export default function Navbar() {
     const formRef = useRef(null);
@@ -27,34 +26,39 @@ export default function Navbar() {
             console.log(response);
         } catch (err) {
             console.error('Tente novamente mais tarde', err);
-            //setLoading(false);
         }
     }
     return (
         <Container>
-            <Nav>
+            <HeaderLine>
                 <Logo>Netflicos</Logo>
                 <LogOff />
-                <Form ref={formRef} onSubmit={handleSubmit}>
+            </HeaderLine>
+            <Form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                style={{ width: '100%' }}
+            >
+                <Search>
                     <Input placeholder="Pesquise" type="text" name="query" />
-                    <button type="submit">Buscar</button>
-                </Form>
+                    <Button type="submit">Buscar</Button>
+                </Search>
+            </Form>
 
-                <div>
-                    {results &&
-                        results.length > 0 &&
-                        results.map((element) => (
-                            <div key={element.id}>
-                                <img
-                                    alt={`poster-${element.id}`}
-                                    width="350"
-                                    src={`https://image.tmdb.org/t/p/w500${element.poster_path}`}
-                                ></img>
-                                {element.original_title}
-                            </div>
-                        ))}
-                </div>
-            </Nav>
+            <div>
+                {results &&
+                    results.length > 0 &&
+                    results.map((element) => (
+                        <div key={element.id}>
+                            <img
+                                alt={`poster-${element.id}`}
+                                width="350"
+                                src={`https://image.tmdb.org/t/p/w500${element.poster_path}`}
+                            ></img>
+                            {element.original_title}
+                        </div>
+                    ))}
+            </div>
         </Container>
     );
 }

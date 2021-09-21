@@ -1,17 +1,18 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import api from '../../services/api';
 import history from '../../services/history';
 
 import Input from '../../components/Input';
+import { Container, HeaderLine, ButtonGroup } from './styles';
 
 const schema = Yup.object().shape({
     email: Yup.string().required('Insira seu email'),
     password: Yup.string().required('Insira sua senha'),
 });
 
-export default function DataTakerUser() {
+export default function SignIn() {
     const formRef = useRef(null);
 
     async function handleSubmit(data) {
@@ -37,7 +38,6 @@ export default function DataTakerUser() {
             }
         } catch (err) {
             console.error('Tente novamente mais tarde', err);
-            //setLoading(false);
             sessionStorage.removeItem('token');
 
             const validationErrors = {};
@@ -53,9 +53,15 @@ export default function DataTakerUser() {
     return (
         <>
             <Form ref={formRef} onSubmit={handleSubmit}>
-                <Input placeholder="email" type="text" name="email" />
-                <Input placeholder="Senha" type="text" name="password" />
-                <button type="submit">Entrar</button>
+                <Container>
+                    <HeaderLine>Login</HeaderLine>
+                    <Input placeholder="E-mail" type="text" name="email" />
+                    <Input placeholder="Senha" type="text" name="password" />
+                    <ButtonGroup>
+                        <button type="submit">Entrar</button>
+                        <a href="/signup">Fazer cadastro</a>
+                    </ButtonGroup>
+                </Container>
             </Form>
         </>
     );
